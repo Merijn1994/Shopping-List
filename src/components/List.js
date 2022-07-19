@@ -1,23 +1,22 @@
 import React, { Component } from "react"
+import ListItem from "./ListItem"
 
-class List extends Component() {
-    constructor() {
-        super()
-        this.state = {}
-    }
-
+class List extends Component {
     render() {
-        <div>
-            <ul>
-                <li>Kwark</li>
-                <li>Eieren</li>
-                <li>Beleg</li>
-                <li>Fruit</li>
-                <li>Brood</li>
-                <li>Snacks</li>
-                <li>Breakers</li>
-            </ul>
-        </div>
+        return (
+            <div>
+                <ul className="app-list">
+                    {this.props.items.map(item => 
+                        <ListItem 
+                            key={item.id}
+                            item={item}
+                            clickItem={() => this.props.onItemClick(item)}
+                            showQuantities={this.props.showQuantities}
+                        />
+                        )}
+                </ul>
+            </div>
+        )
     }
 }
 
